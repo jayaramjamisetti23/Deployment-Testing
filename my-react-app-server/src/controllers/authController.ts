@@ -7,7 +7,7 @@ import type { LoginBody, RegisterBody } from '../types';
 
 function signToken(id: number, email: string): string {
   return jwt.sign({ id, email }, process.env.JWT_SECRET as string, {
-    expiresIn: (process.env.JWT_EXPIRES_IN ?? '7d') as `${number}${'s'|'m'|'h'|'d'}`,
+    expiresIn: (process.env.JWT_EXPIRES_IN ?? '7d') as `${number}${'s' | 'm' | 'h' | 'd'}`,
   });
 }
 

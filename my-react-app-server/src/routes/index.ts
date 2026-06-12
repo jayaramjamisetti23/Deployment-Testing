@@ -7,7 +7,6 @@ const router = Router();
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 
-// Health check
 router.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });

@@ -36,7 +36,6 @@ export interface UpdateUserBody {
   email?: string;
 }
 
-// Augment express Request so req.user is typed after JWT middleware
 declare global {
   namespace Express {
     interface Request {

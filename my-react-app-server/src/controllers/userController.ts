@@ -21,7 +21,6 @@ export function getOne(req: Request, res: Response): void {
 export function updateOne(req: Request, res: Response): void {
   const id = Number(req.params.id);
 
-  // Users can only update their own profile
   if (req.user!.id !== id) {
     sendError(res, 'Forbidden', 403);
     return;

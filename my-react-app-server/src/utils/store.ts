@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import type { UserRecord } from '../types';
 
-// In-memory store — swap for a real DB in production
+// In-memory store — replace with a real DB (Prisma, TypeORM, etc.) for production
 const users: UserRecord[] = [];
 let nextId = 1;
 
@@ -31,7 +31,10 @@ export function create(name: string, email: string, password: string): Omit<User
   return safe;
 }
 
-export function update(id: number, fields: { name?: string; email?: string }): Omit<UserRecord, 'passwordHash'> | null {
+export function update(
+  id: number,
+  fields: { name?: string; email?: string }
+): Omit<UserRecord, 'passwordHash'> | null {
   const idx = users.findIndex((u) => u.id === id);
   if (idx === -1) return null;
   users[idx] = { ...users[idx], ...fields };
@@ -46,6 +49,6 @@ export function remove(id: number): boolean {
   return true;
 }
 
-// Seed a demo user on startup
+// Demo seed data
 create('Alice Demo', 'alice@example.com', 'password123');
 create('Bob Demo', 'bob@example.com', 'password123');
